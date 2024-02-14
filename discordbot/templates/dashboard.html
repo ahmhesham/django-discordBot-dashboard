@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+  <style>
+    /* Internal CSS */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #333;
+    }
+    .rounded-card {
+        border-radius: 10px;
+        background-color: #161769;
+        padding: 20px;
+        width: 300px;
+        
+    }
+    .rounded-card h2 {
+        color: #ffffff;
+    }
+    .rounded-card p {
+        color: #ffffff;
+    }
+</style>
+</head>
+
+<body>
+
+<br>
+<br>
+<br>
+
+    <div class="row">
+
+      {% for guild in guilds %}
+      <div class="col-sm-5">
+        
+        <div class="card">
+          <div class="card-body">
+            
+            <h5 class="card-title">{{ guild.guild_name|slice:":20" }}</h5>
+            <p class="card-text"></p>
+            <a href="{% url 'guild' guild.guild_id %}" class="btn btn-primary">Edit information</a>
+          </div>
+        </div>
+      </div>
+      <br>
+      {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+{% extends "socialaccount/base.html" %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+<style>
+  #content{
+   justify-content: center; 
+		color: red
+  }
+	*{
+
+  margin:0;
+
+  padding: 0;
+
+  box-sizing: border-box;
+
+  font-family: 'Poppins', sans-serif;
+
+}
+
+ html{
+
+  background: url("https://cdn.vox-cdn.com/thumbor/cB3fVHLd85xF00_bh-KzXJe1oMI=/0x0:1706x842/2000x1333/filters:focal(853x421:854x422)/cdn.vox-cdn.com/uploads/chorus_asset/file/25134394/Screen_Shot_2023_12_05_at_7.40.44_AM.png");
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  background-size: cover;
+
+  height: 100%;
+
+ background-color: black;
+
+ }
+ .content{
+  margin-top: 10%;
+  color: white;
+  
+ }
+</style>
+<html>
+  <center>
+    <div class="content">
+      {% if process == "connect" %}
+      <h1>{% blocktrans with provider.name as provider %}Connect {{ provider }}{% endblocktrans %}</h1>
+      
+      <p>{% blocktrans with provider.name as provider %}You are about to connect a new third party account from {{ provider }}.{% endblocktrans %}</p>
+      {% else %}
+      <h1>{% blocktrans with provider.name as provider %}Sign In Via {{ provider }}{% endblocktrans %}</h1>
+      
+      <p>{% blocktrans with provider.name as provider %}You are about to sign in using a third party account from {{ provider }}.{% endblocktrans %}</p>
+      {% endif %}
+      
+      <form method="post">
+        {% csrf_token %}
+        <br>
+        <button type="submit">{% trans "Continue" %}</button>
+      </form>
+    </div>
+    
+
+ 
+    
+  </center>
+  </html>
+  {% endblock %}
